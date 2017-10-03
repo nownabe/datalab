@@ -143,6 +143,7 @@ archive_name=$(mktemp -d)"/archive.zip"
 echo "Creating archive: $archive_name"
 zip -rq ${archive_name} "${backup_path}" || {
   echo "Failed creating the backup archive" | tee -a ${log_file}
+  rm -f "${archive_name}"
   exit 1
 }
 
